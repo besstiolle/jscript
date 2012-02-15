@@ -1,2 +1,2 @@
 <p>fichier : default.tpl</p>
-<p>module : {$module->getLang(friendlyname)}</p>
+<p>module : {$module->Lang(friendlyname)}</p>
