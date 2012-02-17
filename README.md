@@ -21,18 +21,18 @@ Directly or indirectly, **the gains are very important** :
 - Client rendering accelerated (asynchronously loading scripts, less data to load on the network)
 
 Where document?
---------------------------------------
+---------------
 
 The documentation of {JScript} is available on its [wiki](https://github.com/besstiolle/jscript/wiki).
 
 Where can I download this module?
---------------------------------------
+---------------
 
 The releases will be available on the [forge of CmsMadeSimple](http://dev.cmsmadesimple.org/projects/jscript)
 
 
 
-C'est quoi encore ce b*rdel ?
+P*tain c'est quoi encore ce truc ?
 --------------------------------------
 
 {JScript} est un module pour [CmsMadeSimple](http://www.cmsmadesimple.org) qui tente de répondre au besoin croissant des webmasters de réduire l'impact du Javascript dans le chargement des pages web. Voici quelques besoins exprimés pour lesquels {JScript} peut vous aider
@@ -50,11 +50,11 @@ Directement ou indirectement, **les gains sont très importants** :
 - Accélération du rendu client (chargement asynchrone des scripts, moins de données à charger sur le réseau)
 
 Où se documenter ?
---------------------------------------
+---------------
 
 La documentation de {JScript} est disponible sur son [wiki](https://github.com/besstiolle/jscript/wiki).
 
 Où peut on télécharger ce module ?
---------------------------------------
+---------------
 
 Les releases seront disponibles sur la [forge de CmsMadeSimple](http://dev.cmsmadesimple.org/projects/jscript)
