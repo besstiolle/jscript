@@ -20,13 +20,11 @@ Directly or indirectly, **the gains are very important** :
 - Improvement of best-practices by excluding the JS code from your pages
 - Client rendering accelerated (asynchronously loading scripts, less data to load on the network)
 
-Where are documents?
----------------
+### Where are documents? ###
 
 The documentation of {JScript} is available on its [wiki](https://github.com/besstiolle/jscript/wiki).
 
-Where can I download this module?
----------------
+### Where can I download this module? ###
 
 The releases will be available on the [forge of CmsMadeSimple](http://dev.cmsmadesimple.org/projects/jscript)
 
@@ -49,12 +47,10 @@ Directement ou indirectement, **les gains sont très importants** :
 - Amélioration des best-practices en excluant le code JS de vos pages
 - Accélération du rendu client (chargement asynchrone des scripts, moins de données à charger sur le réseau)
 
-Où se documenter ?
----------------
+### Où se documenter ? ###
 
 La documentation de {JScript} est disponible sur son [wiki](https://github.com/besstiolle/jscript/wiki).
 
-Où peut on télécharger ce module ?
----------------
+### Où peut on télécharger ce module ? ###
 
 Les releases seront disponibles sur la [forge de CmsMadeSimple](http://dev.cmsmadesimple.org/projects/jscript)
