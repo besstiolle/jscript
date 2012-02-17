@@ -20,7 +20,7 @@ Directly or indirectly, **the gains are very important** :
 - Improvement of best-practices by excluding the JS code from your pages
 - Client rendering accelerated (asynchronously loading scripts, less data to load on the network)
 
-Where document?
+Where are documents?
 ---------------
 
 The documentation of {JScript} is available on its [wiki](https://github.com/besstiolle/jscript/wiki).
