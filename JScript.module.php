@@ -74,39 +74,43 @@ class JScript extends CmsModule
   
   function SetParameters()
   {
-    //utilisation en {JScript}
+    //can nopw be used liike {JScript [...]}
 	$this->RegisterModulePlugin();
 	
-	//Securite
+	//Security
 	$this->RestrictUnknownParams();
 	
-	$this->CreateParameter('url', null, 'todo');
-	$this->SetParameterType('url',CLEAN_STRING);
-	/*
-	$this->CreateParameter('template', null, 'todo');
-	$this->SetParameterType('template',CLEAN_STRING);
-	
-	$this->CreateParameter('categorie', null, 'todo');
-	$this->SetParameterType('categorie',CLEAN_INT);
-	
-	$this->CreateParameter('texte', null, 'todo');
-	$this->SetParameterType('texte',CLEAN_STRING);
-	
-	$this->CreateParameter('url', null, 'todo');
+  //All parameters : https://github.com/besstiolle/jscript/wiki/Appel-du-module-et-param%C3%A8tres-possibles
+	$this->CreateParameter('file', null, $this->Lang('param_file'));
+	$this->SetParameterType('file',CLEAN_STRING);
+
+	$this->CreateParameter('url', null, $this->Lang('param_url'));
 	$this->SetParameterType('url',CLEAN_STRING);
 	
-	$this->CreateParameter('msgNOk', null, 'todo');
-	$this->SetParameterType('msgNOk',CLEAN_STRING);
+	//$this->CreateParameter('gc', null, $this->Lang('param_gc'));
+	//$this->SetParameterType('gc',CLEAN_STRING);
 	
-	$this->CreateParameter('msgOk', null, 'todo');
-	$this->SetParameterType('msgOk',CLEAN_STRING);
+	$this->CreateParameter('smarty', null, $this->Lang('param_smarty'));
+	$this->SetParameterType('smarty',CLEAN_STRING);
+ 
+	$this->CreateParameter('stack', null, $this->Lang('param_stack'));
+	$this->SetParameterType('stack',CLEAN_STRING);
 	
-	//depotoire pour le re-routage
-	$this->CreateParameter('none', null, 'todo');
-	$this->SetParameterType('none',CLEAN_STRING);
-	$this->CreateParameter('none2', null, 'todo');
-	$this->SetParameterType('none2',CLEAN_STRING);
-	*/
+	$this->CreateParameter('load', null, $this->Lang('param_load'));
+	$this->SetParameterType('load',CLEAN_STRING);
+	
+	$this->CreateParameter('compress', null, $this->Lang('param_compress'));
+	$this->SetParameterType('compress',CLEAN_STRING);
+	
+	$this->CreateParameter('append', null, $this->Lang('param_append'));
+	$this->SetParameterType('append',CLEAN_STRING);
+
+	$this->CreateParameter('priority', null, $this->Lang('param_priority'));
+	$this->SetParameterType('priority',CLEAN_INT);
+  
+  $this->CreateParameter('debug', null, $this->Lang('param_debug'));
+  $this->SetParameterType('debug',CLEAN_STRING);
+	
 	
   }
  
@@ -139,7 +143,7 @@ class JScript extends CmsModule
         
     if($eventname == "ContentPostRender" )
     {
-      echo "exec du rendu :  ".Generate::displayScripts($params);
+      Generate::displayScripts($params);
     }
     
   }

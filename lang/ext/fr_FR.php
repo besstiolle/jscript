@@ -31,4 +31,17 @@ $lang['help'] = '<h3>What Does This Do?</h3>
 <p>As per the GPL, this software is provided as-is. Please read the text of the license for the full disclaimer.</p>
 <h3>Copyright and License</h3>
 <p>This module has been released under the <a href="http://www.gnu.org/licenses/licenses.html#GPL">GNU Public License</a>. You must agree to this license before using the module.</p>';
+$lang['param_file'] = "Le nom du fichier contenant le code javascript. On ne peut utiliser qu'un seul de ces paramètres à la fois : file|url|gc|bloc. Plusieurs valeurs peuvent être renseignées dans ce paramètre en les séparant par des points virgules, des virgules ou des pipes ( | ).";
+$lang['param_url'] = "L'url du fichier contenant le code javascript. On ne peut utiliser qu'un seul de ces paramètres à la fois : file|url|gc|bloc. Plusieurs valeurs peuvent être renseignées dans ce paramètre en les séparant par des points virgules, des virgules ou des pipes ( | ).";
+//$lang['param_gc'] = "Le nom du contenu global contenant le code javascript. On ne peut utiliser qu'un seul de ces paramètres à la fois : file|url|gc|bloc. Plusieurs valeurs peuvent être renseignées dans ce paramètre en les séparant par des points virgules, des virgules ou des pipes ( | ).";
+$lang['param_smarty'] = "Le nom de la variable smarty contenant le code javascript. On ne peut utiliser qu'un seul de ces paramètres à la fois : file|url|gc|bloc. Plusieurs valeurs peuvent être renseignées dans ce paramètre en les séparant par des points virgules, des virgules ou des pipes ( | ).";
+$lang['param_stack'] = "TODO";
+$lang['param_load'] = "TODO";
+$lang['param_compress'] = "TODO";
+$lang['param_append'] = "TODO";
+$lang['param_priority'] = "TODO";
+$lang['param_true'] = "TODO";
+
+
+
 ?>

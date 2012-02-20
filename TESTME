@@ -1,0 +1,65 @@
+﻿ I - Créer un Bloc de contenu global "jscript_cg" et y coller ce code (Attention au WYSIWYG)
+ --------------------------------------------------------------------
+
+<script type="text/javascript">  
+  // <![CDATA[
+$(document).ready(function(){
+echo "hello world";
+});
+// ]]>
+</script>
+
+
+
+ II - Créer le template "template Jscript" et y coller ce code 
+ --------------------------------------------------------------------
+
+
+{process_pagedata}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+
+{JScript url='http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js'}
+{JScript file='./lib/jquery/js/jquery-ui-1.8.14.min.js'}
+
+<title>{sitename} - {title}</title>
+{metadata}
+{cms_stylesheet}
+</head>
+<body>
+
+{capture name='truc' assign='myscript_inline'}{literal}<script type="text/javascript">  
+  // <![CDATA[
+$(document).ready(function(){
+  $('p').addClass('test');
+});
+// ]]>
+  </script>{/literal}{/capture}
+{JScript smarty=$myscript_inline}
+
+      <div style="float: left; width: 25%;">{menu loadprops=0 template='minimal_menu.tpl'}</div>
+      <div><h2>{title}</h2>{content}</div>
+
+	{global_content name='jscript_cg' assign='jscript_cg_smarty'}{JScript smarty=$jscript_cg_smarty}
+</body>
+</html>
+
+
+ III - Créer 2 pages liées au gabarit avec du contenu bateau.
+ --------------------------------------------------------------------
+
+ Dans l'une des deux : ajouter dans l'onglet options > "Balises Smarty spécifiques pour cette page" ce code
+
+ {capture name='truc' assign='myscript_inpage'}{literal}<!--[if IE 6]>
+<script type="text/javascript" src="modules/MenuManager/CSSMenu.js"></script>
+<![endif]-->{/literal}{/capture}
+{JScript smarty=$myscript_inpage}
+
+ IV - Installation du module 
+ --------------------------------------------------------------------
+
+ V - Afficher les pages crées, normalement les scripts devraient apparaitre bien visible dans des tables HTML
+ --------------------------------------------------------------------
+
+
