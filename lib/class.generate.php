@@ -90,8 +90,8 @@ final class Generate{
 
 		$scriptBloc = '';
 		foreach(Generate::$scripts as $script){
-			
-			$miniscript = htmlentities($script);
+			//$miniscript = htmlentities($script);
+			$miniscript = $script;
 			if(strlen($miniscript) > 200){
 				$miniscript = substr($miniscript, 0, 200).' [...Script Cutted For Test...] ' ;	
 			}
