@@ -80,9 +80,9 @@ class JScript extends CmsModule
 	//Securite
 	$this->RestrictUnknownParams();
 	
-	/*$this->CreateParameter('action', null, 'todo');
-	$this->SetParameterType('action',CLEAN_STRING);
-	
+	$this->CreateParameter('url', null, 'todo');
+	$this->SetParameterType('url',CLEAN_STRING);
+	/*
 	$this->CreateParameter('template', null, 'todo');
 	$this->SetParameterType('template',CLEAN_STRING);
 	
@@ -125,5 +125,24 @@ class JScript extends CmsModule
   {
     return $this->Lang('really_uninstall');
   }
+
+  /**
+   * A vrai specifie que la classe possede un appel a evenement
+   */
+  function HandlesEvents()
+  {
+    return true;
+  }
+
+  function DoEvent($originator, $eventname, &$params)
+  {
+        
+    if($eventname == "ContentPostRender" )
+    {
+      echo "exec du rendu :  ".Generate::displayScripts($params);
+    }
+    
+  }
+
 }
 ?>
