@@ -2,13 +2,20 @@
 
 final class Generate{
 
-	public static $scripts = array();
+	public static $vector;
 
 	protected function __construct() {
 	}
+
+	private static function init(){
+		if(Generate::$vector == null){
+			Generate::$vector = new Vector();
+		}
+	}
 	
 	public static function addScript($params){
-
+		//Initiate locale var
+		Generate::init();
 
 		if(empty($params['url']) & empty($params['file']) & empty($params['smarty']) & empty($params['debug']))
 		{
@@ -40,26 +47,31 @@ final class Generate{
 			return;
 		} 
 
+		$script = new Script();
+		//Script Priority : between 0 and 999
+		if(!empty($params['priority']) && is_numeric($params['priority']) && strpos($params['priority'], '.') === FALSE && strpos($params['priority'], ',') === FALSE){
+			$script->setPriority($params['priority']);		
+		}
+
 		//Action => url
 		if(!empty($params['url']))
 		{
-			Generate::$scripts[] = Generate::getUrlContent($params['url']);	
-			return;
+			$script->setContent(Generate::getUrlContent($params['url']));
 		}
 
 		//Action => file
 		if(!empty($params['file']))
 		{
-			Generate::$scripts[] = Generate::getFileContent($params['file']);	
-			return;
+			$script->setContent(Generate::getFileContent($params['file']));	
 		}
 
 		//Action => smarty
 		if(!empty($params['smarty']))
 		{
-			Generate::$scripts[] = Generate::getSmartyContent($params['smarty']);
-			return;	
+			$script->setContent(Generate::getSmartyContent($params['smarty']));
 		}
+
+		Generate::$vector->addScript($script);
 
 	}
 
@@ -85,20 +97,24 @@ final class Generate{
 
 
 	public static function displayScripts($params){
-
+		//Initiate locale var
+		Generate::init();
+		
 		$pattern = '</body>';
 
-		$scriptBloc = '';
-		foreach(Generate::$scripts as $script){
-			//$miniscript = htmlentities($script);
-			$miniscript = $script;
-			if(strlen($miniscript) > 200){
-				$miniscript = substr($miniscript, 0, 200).' [...Script Cutted For Test...] ' ;	
+		$scriptBloc = '<table>';
+		$scripts = Generate::$vector->getOrderedScripts();
+		foreach($scripts as $script){
+			$scriptContent = $script->getContent();
+			if(strlen($scriptContent) > 200){
+				$scriptContent = substr($scriptContent, 0, 200).' [...Script Cutted For Test...] ' ;	
 			}
 			
 
-			$scriptBloc .= '<table style="border:1px solid #000;"><tr><td>'.$miniscript.'</td></tr></table>';
+			$scriptBloc .= '<tr><td style="border:1px solid #000;">'.$script->getPriority()
+						.'</td><td style="border:1px solid #000;">'.$scriptContent.'</td></tr>';
 		}
+		$scriptBloc .= '</table>';
 
 		$params['content'] = str_replace($pattern, $scriptBloc.$pattern, $params['content']);
 

@@ -20,8 +20,8 @@ echo "hello world";
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 
-{JScript url='http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js'}
-{JScript file='./lib/jquery/js/jquery-ui-1.8.14.min.js'}
+{JScript url='http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js' priority=700}
+{JScript file='./lib/jquery/js/jquery-ui-1.8.14.min.js' priority=700}
 
 <title>{sitename} - {title}</title>
 {metadata}
@@ -36,7 +36,7 @@ $(document).ready(function(){
 });
 // ]]>
   </script>{/literal}{/capture}
-{JScript smarty=$myscript_inline}
+{JScript smarty=$myscript_inline priority=50}
 
       <div style="float: left; width: 25%;">{menu loadprops=0 template='minimal_menu.tpl'}</div>
       <div><h2>{title}</h2>{content}</div>
@@ -51,15 +51,19 @@ $(document).ready(function(){
 
  Dans l'une des deux : ajouter dans l'onglet options > "Balises Smarty spécifiques pour cette page" ce code
 
- {capture name='truc' assign='myscript_inpage'}{literal}<!--[if IE 6]>
+{capture name='truc' assign='myscript_inpage'}{literal}<!--[if IE 6]>
 <script type="text/javascript" src="modules/MenuManager/CSSMenu.js"></script>
 <![endif]-->{/literal}{/capture}
-{JScript smarty=$myscript_inpage}
+{JScript smarty=$myscript_inpage priority=200}
 
  IV - Installation du module 
  --------------------------------------------------------------------
 
- V - Afficher les pages crées, normalement les scripts devraient apparaitre bien visible dans des tables HTML
+ V - Accéder aux pages
  --------------------------------------------------------------------
 
-
+normalement les scripts devraient apparaitre bien visible dans des tables HTML.
+L'ordre d'apparition des scripts doit se faire de manière décroissante sur la priorité : 
+ -> Jquery
+ -> Jquery-ui
+ ->
