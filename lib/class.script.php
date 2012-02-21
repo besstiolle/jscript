@@ -2,11 +2,12 @@
 
 final class Script{
 
-	private $stack='all';
+	private $stack='generic';
 	private $load='sync';
 	private $compress='none';
 	private $append=true;
 	private $priority=100;
+	private $hash;
 
 	private $content='';
 
@@ -32,6 +33,9 @@ final class Script{
 	}
 	public function getContent(){
 		return $this->content;
+	}
+	public function getHash(){
+		return $this->hash;
 	}
 
 	//Setters with some controls
@@ -76,6 +80,9 @@ final class Script{
 	}
 	public function setContent($param){
 		$this->content = $param;
+	}
+	public function SetHash($param){
+		$this->hash = $param;
 	}
 
 }

@@ -50,25 +50,40 @@ final class Generate{
 		$script = new Script();
 		//Script Priority : between 0 and 999
 		if(!empty($params['priority']) && is_numeric($params['priority']) && strpos($params['priority'], '.') === FALSE && strpos($params['priority'], ',') === FALSE){
-			$script->setPriority($params['priority']);		
+			$script->setPriority($params['priority']);	
 		}
 
 		//Action => url
 		if(!empty($params['url']))
 		{
+			//check if valid url
+			if(!preg_match('|^http(s)?://[a-z0-9-]+(.[a-z0-9-]+)*(:[0-9]+)?(/.*)?$|i', $params['url'])) {
+				return;
+			}
 			$script->setContent(Generate::getUrlContent($params['url']));
+			$script->setHash(md5($params['url'])); //Hash sur l'url
 		}
 
 		//Action => file
 		if(!empty($params['file']))
 		{
+			$gcms = cmsms(); 
+			$config = $gcms->GetConfig();
+			$path = $config['root_path'].'/'.$params['file'];
+			
+			if(!file_exists($path)) {
+				return;
+			}
 			$script->setContent(Generate::getFileContent($params['file']));	
+			$script->setHash(md5($params['file'])); //Hash sur le nom de fichier
+			
 		}
 
 		//Action => smarty
 		if(!empty($params['smarty']))
 		{
 			$script->setContent(Generate::getSmartyContent($params['smarty']));
+			$script->setHash(md5($params['smarty'])); // //Hash sur le contenu
 		}
 
 		Generate::$vector->addScript($script);
@@ -79,12 +94,12 @@ final class Generate{
 		$content = file_get_contents($url);
 		return $content;
 	}
-
-	private static function getFileContent($uri){
+	
+	private static function getFileContent($file){
 		$gcms = cmsms(); 
 		$config = $gcms->GetConfig();
 		$path = $config['root_path'];
-		$content = file_get_contents($path.'/'.$uri);
+		$content = file_get_contents($path.'/'.$file);
 		return $content;
 
 	}
