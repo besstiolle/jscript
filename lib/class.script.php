@@ -1,19 +1,25 @@
 <?php
 
-final class Script{
+abstract class Script{
 
-	private $stack='generic';
-	private $load='sync';
-	private $compress='none';
-	private $append=true;
-	private $priority=100;
-	private $hash;
+	protected $stack='generic';
+	protected $load='sync';
+	protected $compress='none';
+	protected $append=true;
+	protected $priority=100;
+	protected $hash;
+	protected $value;
 
-	private $content='';
+	//private $content='';
 
-	public function __construct() {
-		
+	public function __construct($value) {
+		$this->value = $value;
 	}
+	
+	//Must be recoded in subclasses
+	public abstract function getContent();
+	public abstract function getHash();
+	public abstract static function isValidValue($value);
 	
 	//Basics Getters
 	public function getStack(){
@@ -30,12 +36,6 @@ final class Script{
 	}
 	public function getPriority(){
 		return $this->priority;
-	}
-	public function getContent(){
-		return $this->content;
-	}
-	public function getHash(){
-		return $this->hash;
 	}
 
 	//Setters with some controls
@@ -78,13 +78,6 @@ final class Script{
 		}
 		$this->priority = $param;
 	}
-	public function setContent($param){
-		$this->content = $param;
-	}
-	public function SetHash($param){
-		$this->hash = $param;
-	}
-
 }
 
 

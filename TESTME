@@ -55,7 +55,8 @@ $(document).ready(function(){
 {capture name='truc' assign='myscript_inpage'}{literal}<!--[if IE 6]>
 <script type="text/javascript" src="modules/MenuManager/CSSMenu.js"></script>
 <![endif]-->{/literal}{/capture}
-{JScript smarty=$myscript_inpage priority=200}
+{JScript smarty=$myscript_inpage priority=200 stack='other'}
+
 
  IV - Installation du module 
  --------------------------------------------------------------------
